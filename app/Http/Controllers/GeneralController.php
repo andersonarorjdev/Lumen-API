@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-
 use Laravel\Lumen\Routing\Controller as BaseController;
+
+use App\Models\estabelecimento;
 
 class GeneralController extends BaseController
 {
     public function Login(Request $request){
         if($request){
-
-            return 'Rota de Login';   
+           estabelecimento::create($request->all());
         }
     }
     
-    public function getAll($eid){
-       return 'Rota que vai retornar os dados de um estabelecimento'. $eid;
+    public function getAll(Request $request, $eid){
+      return estabelecimento::all();
     }
 
     public function getAllclientes($id){
@@ -28,8 +28,8 @@ class GeneralController extends BaseController
         }
     }
 
-    public function getfromClientes($id){
-        return 'Retorna os dados de determinado cliente sob determinado ud:'.$id;
+    public function getfromClientes($cid){
+        return 'Retorna os dados de determinado cliente sob determinado ud:'.$cid;
     }
 
     public function updateCliente($id){
