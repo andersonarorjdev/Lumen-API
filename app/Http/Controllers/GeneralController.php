@@ -9,17 +9,26 @@ use App\Models\estabelecimento;
 class GeneralController extends BaseController
 {
     public function Login(Request $request){
-        if($request){
-           estabelecimento::create($request->all());
+        if($request->name && $request->email){
+           return 'Token';
         }
+       else{
+           return '404';
+       }
+    }
+
+    public function CreateEstabilishment(Request $request){
+       estabelecimento::create([
+           'name' => $request->name
+       ]);
     }
     
-    public function getAll(Request $request, $eid){
+    public function getAll(){
       return estabelecimento::all();
     }
 
-    public function getAllclientes($id){
-        return 'Rota que vai retornar os dados de todos os clientes sob detereminado estabelecimento'. $id;
+    public function getAllclientes($esid){
+        return estabelecimento::find($esid)->clientes;
     }
 
     public function postCliente(Request $request){

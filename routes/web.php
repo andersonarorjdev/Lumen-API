@@ -19,9 +19,10 @@ $router->get('/', function() use ($router){
 
 $router->group(['prefix' => '/api/v2'], function () use ($router) {
     $router->post('/login', 'GeneralController@Login');
-    $router->get('/estabelecimentos/{eid}', 'GeneralController@getAll');
-    $router->get('/estabelecimentos/{eid}/clientes', 'GeneralController@getAllClientes');
-    $router->post('/estabelecimentos/{eid}/clients', 'GeneralController@postCliente');
-    $router->get('/estabelecimentos/{eid}/clientes/{cid}', 'GeneralController@getfromClientes');
-    $router->put('/estabelecimentos/{eid}/clientes/{cid}', 'GeneralController@updateCliente');
+    $router->post('/estabelecimentos/', 'GeneralController@CreateEstabilishment');
+    $router->get('/estabelecimentos/', 'GeneralController@getAll');
+    $router->get('/estabelecimentos/{esid}/clientes', 'GeneralController@getAllClientes');
+    $router->post('/estabelecimentos/{esid}/clients', 'GeneralController@postCliente');
+    $router->get('/estabelecimentos/{esid}/clientes/{clid}', 'GeneralController@getfromClientes');
+    $router->put('/estabelecimentos/{esid}/clientes/{clid}', 'GeneralController@updateCliente');
 });
