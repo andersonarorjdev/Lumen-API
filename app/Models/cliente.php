@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class cliente extends Model
 {
-  public function cliente(){
-    return $this->belongsToMany('App\cliente');
-  }
+    protected $primaryKey = 'id';
+
+    protected $table = "cliente";
+    protected $fillable = ['name'];
+
+    public function clientes(){
+        return $this->belongsToMany('App\Models\estabelecimento', 'cliente_estabelecimento', 'id_estabelecimento'); 
+    }
 }
 
 ?>
